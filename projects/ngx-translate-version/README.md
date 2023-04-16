@@ -44,6 +44,15 @@ yarn add ngx-translate-version
   })
 ```
 
+## Options
+
+| Option              | Type                     | Default                              | Description                           |
+| ------------------- | ------------------------ | ------------------------------------ | ------------------------------------- |
+| **defaultLanguage** | string                   | `en`                                 | Default language of your appliceation |
+| **version**         | string                   | `0.0.0`                              | Version of your application           |
+| **pathLocales**     | string                   | `assets/locales.json`                | Path to file with locales             |
+| **pathI18n**        | (lang: string) => string | `(lang) => assets/i18n/${lang}.json` | Path to faile with translations       |
+
 ## Peer Dependencies
 
 ```
