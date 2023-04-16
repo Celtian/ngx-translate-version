@@ -66,8 +66,22 @@
   </div>
 
   <!-- Introduction -->
-  <h2>Let's Repeat the Element!</h2>
+  <h2>Let's Translate Routes!</h2>
   <p>Simple directive which supports repeating by count</p>
+
+  <ul>
+    <li>
+      <a [routerLink]="['/' | localize]">homapage</a>
+    </li>
+    <li>
+      <a [routerLink]="['/' + 'page-one' | localize]">page one</a>
+    </li>
+    <li>
+      <a [routerLink]="['/' + 'page-two' | localize]">page two</a>
+    </li>
+  </ul>
+
+  <router-outlet></router-outlet>
 
   <!-- Footer -->
   <footer>

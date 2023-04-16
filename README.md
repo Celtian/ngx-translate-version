@@ -7,7 +7,6 @@
 [![Package License](https://img.shields.io/npm/l/ngx-translate-version.svg)](https://www.npmjs.com/ngx-translate-version)
 [![NPM Downloads](https://img.shields.io/npm/dm/ngx-translate-version.svg)](https://www.npmjs.com/ngx-translate-version)
 [![Build & Publish](https://github.com/celtian/ngx-translate-version/workflows/Build%20&%20Publish/badge.svg)](https://github.com/celtian/ngx-translate-version/actions)
-[![codecov](https://codecov.io/gh/Celtian/ngx-translate-version/branch/master/graph/badge.svg?token=1IRUKIKM0D)](https://codecov.io/gh/celtian/ngx-translate-version/)
 [![stars](https://badgen.net/github/stars/celtian/ngx-translate-version)](https://github.com/celtian/ngx-translate-version/)
 [![forks](https://badgen.net/github/forks/celtian/ngx-translate-version)](https://github.com/celtian/ngx-translate-version/)
 [![HitCount](http://hits.dwyl.com/celtian/ngx-translate-version.svg)](http://hits.dwyl.com/celtian/ngx-translate-version)
@@ -16,10 +15,7 @@
 
 > ✓ _Angular 15, Ivy and SSR compatible_
 
-Here's the [demo](http://celtian.github.io/ngx-translate-version/) or [stackblitz live preview](https://stackblitz.com/edit/ngx-translate-version) or [codesandbox live preview](https://codesandbox.io/s/ngx-translate-version-bew8f)
-
-- Lightweight
-- No dependencies!
+Here's the [demo](http://celtian.github.io/ngx-translate-version/)
 
 ## Install
 

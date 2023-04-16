@@ -1,11 +1,9 @@
-import { isPlatformBrowser, Location } from '@angular/common';
+import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { InjectionToken } from '@angular/core';
 import { Routes } from '@angular/router';
 import { LocalizeParser, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
-import { LocalizeRouterHttpLoader } from '@gilsdav/ngx-translate-router-http-loader';
 import { TranslateLoader, TranslateService } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Observable } from 'rxjs';
 
 export interface NgxTranslateVersionConfig {
@@ -22,7 +20,9 @@ export const NGX_TRANSLATE_VERSION_CONFIG_TOKEN = new InjectionToken<NgxTranslat
   'ngx-translate-version-config'
 );
 
-export class TranslateUniversalLoader implements TranslateLoader {
+export const NGX_TRANSLATE_VERSION_ROUTES_TOKEN = new InjectionToken<Routes>('ngx-translate-version-routes');
+
+export class TranslateCustomLoader implements TranslateLoader {
   constructor(private http: HttpClient, private config: NgxTranslateVersionConfig, private baseHref: string) {}
 
   public getTranslation(lang: string): Observable<any> {
@@ -32,23 +32,21 @@ export class TranslateUniversalLoader implements TranslateLoader {
 
 export function translateLoaderFactory(
   httpClient: HttpClient,
-  platform: any,
   config: NgxTranslateVersionConfig,
   baseHref: string
 ): TranslateLoader {
-  return isPlatformBrowser(platform)
-    ? new TranslateHttpLoader(httpClient, `${baseHref}assets/i18n/`, `.json?v=${config.version}`)
-    : new TranslateUniversalLoader(httpClient, config, baseHref);
+  return new TranslateCustomLoader(httpClient, config, baseHref);
 }
 
-export class LocalizeUniversalLoader extends LocalizeParser {
+export class LocalizeCustomLoader extends LocalizeParser {
   constructor(
     translate: TranslateService,
     location: Location,
     settings: LocalizeRouterSettings,
     private http: HttpClient,
     private config: NgxTranslateVersionConfig,
-    private baseHref: string
+    private baseHref: string,
+    private routesFromToken: Routes
   ) {
     super(translate, location, settings);
   }
@@ -58,7 +56,7 @@ export class LocalizeUniversalLoader extends LocalizeParser {
       this.http.get<any>(`${this.baseHref}assets/locales.json?v=${this.config}`).subscribe((data: any) => {
         this.locales = data.locales;
         this.prefix = data.prefix;
-        this.init(routes).then(resolve);
+        this.init(this.routesFromToken).then(resolve);
       });
     });
   }
@@ -69,17 +67,9 @@ export function localizeLoaderFactory(
   location: Location,
   settings: LocalizeRouterSettings,
   http: HttpClient,
-  platform: any,
+  baseHref: string,
   config: NgxTranslateVersionConfig,
-  baseHref: string
+  routes: Routes
 ): LocalizeParser {
-  return isPlatformBrowser(platform)
-    ? new LocalizeRouterHttpLoader(
-        translate,
-        location,
-        settings,
-        http,
-        `${baseHref}assets/locales.json?v=${config.version}`
-      )
-    : new LocalizeUniversalLoader(translate, location, settings, http, config, baseHref);
+  return new LocalizeCustomLoader(translate, location, settings, http, config, baseHref, routes);
 }

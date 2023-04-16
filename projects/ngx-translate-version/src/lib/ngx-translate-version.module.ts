@@ -1,11 +1,12 @@
-import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
+import { APP_BASE_HREF, Location, PlatformLocation } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Inject, ModuleWithProviders, NgModule, PLATFORM_ID } from '@angular/core';
+import { Inject, ModuleWithProviders, NgModule } from '@angular/core';
 import { Route } from '@angular/router';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
   NGX_TRANSLATE_VERSION_CONFIG_TOKEN,
+  NGX_TRANSLATE_VERSION_ROUTES_TOKEN,
   NgxTranslateVersionConfig,
   defaultNgxTranslateVersionConfig,
   localizeLoaderFactory,
@@ -19,7 +20,22 @@ import {
       loader: {
         provide: TranslateLoader,
         useFactory: translateLoaderFactory,
-        deps: [HttpClient, PLATFORM_ID, NGX_TRANSLATE_VERSION_CONFIG_TOKEN, APP_BASE_HREF]
+        deps: [HttpClient, NGX_TRANSLATE_VERSION_CONFIG_TOKEN, APP_BASE_HREF]
+      }
+    }),
+    LocalizeRouterModule.forRoot([], {
+      parser: {
+        provide: LocalizeParser,
+        useFactory: localizeLoaderFactory,
+        deps: [
+          TranslateService,
+          Location,
+          LocalizeRouterSettings,
+          HttpClient,
+          APP_BASE_HREF,
+          NGX_TRANSLATE_VERSION_CONFIG_TOKEN,
+          NGX_TRANSLATE_VERSION_ROUTES_TOKEN
+        ]
       }
     })
   ],
@@ -51,25 +67,12 @@ export class NgxTranslateVersionModule {
         {
           provide: NGX_TRANSLATE_VERSION_CONFIG_TOKEN,
           useValue: { ...defaultNgxTranslateVersionConfig, ...config }
+        },
+        {
+          provide: NGX_TRANSLATE_VERSION_ROUTES_TOKEN,
+          useValue: routes
         }
-      ],
-      imports: [
-        LocalizeRouterModule.forRoot(routes, {
-          parser: {
-            provide: LocalizeParser,
-            useFactory: localizeLoaderFactory,
-            deps: [
-              TranslateService,
-              Location,
-              LocalizeRouterSettings,
-              HttpClient,
-              PLATFORM_ID,
-              NGX_TRANSLATE_VERSION_CONFIG_TOKEN,
-              APP_BASE_HREF
-            ]
-          }
-        })
       ]
-    } as ModuleWithProviders<NgxTranslateVersionModule>;
+    };
   }
 }
