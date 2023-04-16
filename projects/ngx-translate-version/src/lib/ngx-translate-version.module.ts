@@ -1,10 +1,16 @@
 import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Inject, ModuleWithProviders, NgModule, PLATFORM_ID } from '@angular/core';
+import { Route } from '@angular/router';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
-import { I18N_CONFIG_TOKEN, I18nConfig, defaultI18nConfig } from './ngx-translate-version.utils';
-import { localizeLoaderFactory, translateLoaderFactory } from './translate-loaders';
+import {
+  NGX_TRANSLATE_VERSION_CONFIG_TOKEN,
+  NgxTranslateVersionConfig,
+  defaultNgxTranslateVersionConfig,
+  localizeLoaderFactory,
+  translateLoaderFactory
+} from './ngx-translate-version.utils';
 
 @NgModule({
   imports: [
@@ -13,22 +19,7 @@ import { localizeLoaderFactory, translateLoaderFactory } from './translate-loade
       loader: {
         provide: TranslateLoader,
         useFactory: translateLoaderFactory,
-        deps: [HttpClient, PLATFORM_ID, I18N_CONFIG_TOKEN, APP_BASE_HREF]
-      }
-    }),
-    LocalizeRouterModule.forRoot([], {
-      parser: {
-        provide: LocalizeParser,
-        useFactory: localizeLoaderFactory,
-        deps: [
-          TranslateService,
-          Location,
-          LocalizeRouterSettings,
-          HttpClient,
-          PLATFORM_ID,
-          I18N_CONFIG_TOKEN,
-          APP_BASE_HREF
-        ]
+        deps: [HttpClient, PLATFORM_ID, NGX_TRANSLATE_VERSION_CONFIG_TOKEN, APP_BASE_HREF]
       }
     })
   ],
@@ -44,20 +35,41 @@ import { localizeLoaderFactory, translateLoaderFactory } from './translate-loade
 export class NgxTranslateVersionModule {
   constructor(
     private translate: TranslateService,
-    @Inject(I18N_CONFIG_TOKEN) private config: I18nConfig = defaultI18nConfig
+    @Inject(NGX_TRANSLATE_VERSION_CONFIG_TOKEN)
+    private config: NgxTranslateVersionConfig = defaultNgxTranslateVersionConfig
   ) {
     this.translate.setDefaultLang(this.config.defaultLanguage);
   }
 
-  public static forRoot(config: Partial<I18nConfig>): ModuleWithProviders<any> {
+  public static forRoot(
+    routes: Route[],
+    config: Partial<NgxTranslateVersionConfig>
+  ): ModuleWithProviders<NgxTranslateVersionModule> {
     return {
       ngModule: NgxTranslateVersionModule,
       providers: [
         {
-          provide: I18N_CONFIG_TOKEN,
-          useValue: { ...defaultI18nConfig, ...config }
+          provide: NGX_TRANSLATE_VERSION_CONFIG_TOKEN,
+          useValue: { ...defaultNgxTranslateVersionConfig, ...config }
         }
+      ],
+      imports: [
+        LocalizeRouterModule.forRoot(routes, {
+          parser: {
+            provide: LocalizeParser,
+            useFactory: localizeLoaderFactory,
+            deps: [
+              TranslateService,
+              Location,
+              LocalizeRouterSettings,
+              HttpClient,
+              PLATFORM_ID,
+              NGX_TRANSLATE_VERSION_CONFIG_TOKEN,
+              APP_BASE_HREF
+            ]
+          }
+        })
       ]
-    };
+    } as ModuleWithProviders<NgxTranslateVersionModule>;
   }
 }

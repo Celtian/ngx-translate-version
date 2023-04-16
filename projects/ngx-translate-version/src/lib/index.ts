@@ -1,2 +1,2 @@
-export * from './ngx-translate-version.directive';
 export * from './ngx-translate-version.module';
+export * from './ngx-translate-version.utils';

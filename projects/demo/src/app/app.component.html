@@ -69,49 +69,6 @@
   <h2>Let's Repeat the Element!</h2>
   <p>Simple directive which supports repeating by count</p>
 
-  <!-- Example -->
-  <div class="card-container">
-    <div class="card card-small" (click)="increment()" tabindex="0">
-      <span>Increment</span>
-    </div>
-    <div class="card card-small" (click)="decrement()" tabindex="1">
-      <span>Decrement</span>
-    </div>
-  </div>
-
-  <h3>Count is: <strong>{{ count }}</strong></h3>
-
-  <div class="terminal">
-    <div>
-      <code>
-        {{ code }}
-      </code>
-    </div>
-  </div>
-
-  <div class="example example-content">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>index</th>
-          <th>even</th>
-          <th>odd</th>
-          <th>first</th>
-          <th>last</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngxRepeat="count; let index = index; let even = even; let odd = odd; let first = first; let last = last;">
-          <td>{{ index }}</td>
-          <td>{{ even }}</td>
-          <td>{{ odd }}</td>
-          <td>{{ first }}</td>
-          <td>{{ last }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
   <!-- Footer -->
   <footer>
       Love this package?&nbsp;
