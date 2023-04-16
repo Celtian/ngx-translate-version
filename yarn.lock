@@ -2033,6 +2033,20 @@
   resolved "https://registry.yarnpkg.com/@gar/promisify/-/promisify-1.1.3.tgz#555193ab2e3bb3b6adc3d551c9c030d9e860daf6"
   integrity sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==
 
+"@gilsdav/ngx-translate-router-http-loader@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@gilsdav/ngx-translate-router-http-loader/-/ngx-translate-router-http-loader-2.0.0.tgz#5ea15ca8df225821890f300cc7d7bb7ce7079544"
+  integrity sha512-L5EguzAM7CIDrdnKEQw0AjNzmrxbhmUHdzs5R+WS1snBsJykfvjpl6UkPTAH7umt52nUanmO8bxXoRQxYRuBAA==
+  dependencies:
+    tslib "^2.3.0"
+
+"@gilsdav/ngx-translate-router@^6.1.0":
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/@gilsdav/ngx-translate-router/-/ngx-translate-router-6.1.0.tgz#7930df2ce95d6c77eb797ba8cfb2cce66adc5152"
+  integrity sha512-SdOzrtNAULkIvH+A2Bt7h4VN5hYWpa5tEzU8rG3otToQ77lm84IsJoTVzOA1KHoRaYjH7hy0MO52qskQ6O7WVA==
+  dependencies:
+    tslib "^2.3.0"
+
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
   resolved "https://registry.yarnpkg.com/@humanwhocodes/config-array/-/config-array-0.11.8.tgz#03595ac2075a4dc0f191cc2131de14fbd7d410b9"
@@ -2156,6 +2170,20 @@
   version "15.2.3"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-15.2.3.tgz#dad395ea10d9c7f58aeac17728a66d589c78e89b"
   integrity sha512-mds3EXzEA6nn6X7gBYv0W6yCTw53EmYGFdyK1ZFl/TPboKrkhn9J5SjSDPEc7UQC3tjVwWnOxgNxkPOBpbQzIw==
+
+"@ngx-translate/core@^14.0.0":
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/core/-/core-14.0.0.tgz#af421d0e1a28376843f0fed375cd2fae7630a5ff"
+  integrity sha512-UevdwNCXMRCdJv//0kC8h2eSfmi02r29xeE8E9gJ1Al4D4jEJ7eiLPdjslTMc21oJNGguqqWeEVjf64SFtvw2w==
+  dependencies:
+    tslib "^2.3.0"
+
+"@ngx-translate/http-loader@^7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@ngx-translate/http-loader/-/http-loader-7.0.0.tgz#905f38d8d13342621516635bf480ff9a4f73e9fc"
+  integrity sha512-j+NpXXlcGVdyUNyY/qsJrqqeAdJdizCd+GKh3usXExSqy1aE9866jlAIL+xrfDU4w+LiMoma5pgE4emvFebZmA==
+  dependencies:
+    tslib "^2.3.0"
 
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"

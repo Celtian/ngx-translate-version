@@ -10,8 +10,12 @@
   "license": "MIT",
   "description": "Angular module that provides version to your language files",
   "peerDependencies": {
-    "@angular/common": ">=12",
-    "@angular/core": ">=12"
+    "@angular/common": ">=15",
+    "@angular/core": ">=15",
+    "@gilsdav/ngx-translate-router-http-loader": ">=2",
+    "@gilsdav/ngx-translate-router": ">=6",
+    "@ngx-translate/core": ">=14",
+    "@ngx-translate/http-loader": ">=7"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -29,6 +33,6 @@
     "ngx"
   ],
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   }
 }
