@@ -25,7 +25,7 @@ Here's the [demo](http://celtian.github.io/ngx-translate-version/)
 yarn add ngx-translate-version
 ```
 
-2. Add NgxRepeatModule into your module `imports`
+2. Add NgxTranslateVersionModule into your module `imports`
 
 ```typescript
   import { NgxTranslateVersionModule } from 'ngx-translate-version';
