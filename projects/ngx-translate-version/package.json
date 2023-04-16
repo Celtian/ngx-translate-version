@@ -1,0 +1,34 @@
+{
+  "name": "ngx-translate-version",
+  "version": "0.0.0",
+  "author": {
+    "name": "Dominik Hladík",
+    "email": "dominik.hladik@seznam.cz",
+    "url": "https://github.com/Celtian"
+  },
+  "private": false,
+  "license": "MIT",
+  "description": "Angular module that provides version to your language files",
+  "peerDependencies": {
+    "@angular/common": ">=12",
+    "@angular/core": ">=12"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
+  },
+  "homepage": "https://github.com/Celtian/ngx-translate-version",
+  "repository": {
+    "url": "git+https://github.com/Celtian/ngx-translate-version.git",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/Celtian/ngx-translate-version/issues"
+  },
+  "keywords": [
+    "angular",
+    "ngx"
+  ],
+  "engines": {
+    "node": ">=12"
+  }
+}
