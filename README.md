@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/Celtian/ngx-translate-version" target="blank"><img src="assets/logo.svg?sanitize=true" alt="" width="120"></a>
-  <h1 align="center">NgxRepeat</h1>
+  <h1 align="center">NgxTranslateVersion</h1>
 </p>
 
 [![npm version](https://badge.fury.io/js/ngx-translate-version.svg)](https://badge.fury.io/js/ngx-translate-version)
@@ -28,22 +28,32 @@ yarn add ngx-translate-version
 2. Add NgxRepeatModule into your module `imports`
 
 ```typescript
-  import { NgxRepeatModule } from 'ngx-translate-version';
+  import { NgxTranslateVersionModule } from 'ngx-translate-version';
 
   @NgModule({
    // ...
    imports: [
      // ...
-     NgxRepeatModule
+     NgxTranslateVersionModule.forRoot(routes, {
+       defaultLanguage: 'en',
+       version: VERSION.TAG,
+       pathLocales: 'assets/locales.json',
+       pathI18n: (lang) => `assets/i18n/${lang}.json`
+     })
    ]
   })
 ```
 
-## Quick start
+## Peer Dependencies
 
-## Dependencies
-
-_None_
+```
+  "@angular/common": ">=15",
+  "@angular/core": ">=15",
+  "@gilsdav/ngx-translate-router-http-loader": ">=2",
+  "@gilsdav/ngx-translate-router": ">=6",
+  "@ngx-translate/core": ">=14",
+  "@ngx-translate/http-loader": ">=7"
+```
 
 ## License
 

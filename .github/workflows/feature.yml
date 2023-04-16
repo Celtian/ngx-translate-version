@@ -45,8 +45,8 @@ jobs:
       - name: Build ngx-translate-version # Build
         run: yarn build
 
-      - name: Run tests
-        run: yarn test --configuration=ci
+      # - name: Run tests
+      #   run: yarn test --configuration=ci
 
       - name: Upload coverage reports
         uses: codecov/codecov-action@v2

@@ -9,11 +9,15 @@ import { Observable } from 'rxjs';
 export interface NgxTranslateVersionConfig {
   version: string;
   defaultLanguage: string;
+  pathLocales: string;
+  pathI18n: (lang: string) => string;
 }
 
 export const defaultNgxTranslateVersionConfig: NgxTranslateVersionConfig = {
   version: '0.0.0',
-  defaultLanguage: 'en'
+  defaultLanguage: 'en',
+  pathLocales: 'assets/locales.json',
+  pathI18n: (lang) => `assets/i18n/${lang}.json`
 };
 
 export const NGX_TRANSLATE_VERSION_CONFIG_TOKEN = new InjectionToken<NgxTranslateVersionConfig>(
@@ -26,7 +30,7 @@ export class TranslateCustomLoader implements TranslateLoader {
   constructor(private http: HttpClient, private config: NgxTranslateVersionConfig, private baseHref: string) {}
 
   public getTranslation(lang: string): Observable<any> {
-    return this.http.get<any>(`${this.baseHref}assets/i18n/${lang}.json?v=${this.config.version}`);
+    return this.http.get<any>(`${this.baseHref}${this.config.pathI18n(lang)}?v=${this.config.version}`);
   }
 }
 
@@ -53,11 +57,13 @@ export class LocalizeCustomLoader extends LocalizeParser {
 
   public load(routes: Routes): Promise<any> {
     return new Promise((resolve: any) => {
-      this.http.get<any>(`${this.baseHref}assets/locales.json?v=${this.config}`).subscribe((data: any) => {
-        this.locales = data.locales;
-        this.prefix = data.prefix;
-        this.init(this.routesFromToken).then(resolve);
-      });
+      this.http
+        .get<any>(`${this.baseHref}${this.config.pathLocales}?v=${this.config.version}`)
+        .subscribe((data: any) => {
+          this.locales = data.locales;
+          this.prefix = data.prefix;
+          this.init(this.routesFromToken).then(resolve);
+        });
     });
   }
 }

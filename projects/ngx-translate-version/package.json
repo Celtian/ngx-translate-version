@@ -30,7 +30,10 @@
   },
   "keywords": [
     "angular",
-    "ngx"
+    "i18n",
+    "ngx",
+    "translate",
+    "version"
   ],
   "engines": {
     "node": ">=14"

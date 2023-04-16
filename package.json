@@ -96,7 +96,10 @@
   },
   "keywords": [
     "angular",
-    "ngx"
+    "i18n",
+    "ngx",
+    "translate",
+    "version"
   ],
   "files": [
     "dist"
