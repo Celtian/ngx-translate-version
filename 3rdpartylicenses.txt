@@ -14,7 +14,7 @@ MIT
 MIT
 
 @ngx-translate/core
-MIT
+SEE LICENSE IN LICENSE
 
 ngx-translate-version
 MIT
