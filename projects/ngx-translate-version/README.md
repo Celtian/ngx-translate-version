@@ -53,15 +53,22 @@ yarn add ngx-translate-version
 | **pathLocales**     | string                   | `assets/locales.json`                | Path to file with locales             |
 | **pathI18n**        | (lang: string) => string | `(lang) => assets/i18n/${lang}.json` | Path to faile with translations       |
 
+## Compatibility
+
+| Angular | ngx-translate-version | Install                            |
+| ------- | --------------------- | ---------------------------------- |
+| 16      | 1.x                   | `yarn add ngx-translate-version`   |
+| 15      | 0.x                   | `yarn add ngx-translate-version@0` |
+
 ## Peer Dependencies
 
 ```
-  "@angular/common": ">=15",
-  "@angular/core": ">=15",
+  "@angular/common": ">=16",
+  "@angular/core": ">=16",
   "@gilsdav/ngx-translate-router-http-loader": ">=2",
   "@gilsdav/ngx-translate-router": ">=6",
-  "@ngx-translate/core": ">=14",
-  "@ngx-translate/http-loader": ">=7"
+  "@ngx-translate/core": ">=15",
+  "@ngx-translate/http-loader": ">=8"
 ```
 
 ## License
