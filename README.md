@@ -13,7 +13,7 @@
 
 > Angular module that provides version to your language files
 
-> ✓ _Angular 16, Ivy and SSR compatible_
+> ✓ _Angular 17 compatible_
 
 Here's the [demo](http://celtian.github.io/ngx-translate-version/)
 
@@ -57,16 +57,17 @@ yarn add ngx-translate-version
 
 | Angular | ngx-translate-version | Install                            |
 | ------- | --------------------- | ---------------------------------- |
-| 16      | 1.x                   | `yarn add ngx-translate-version`   |
+| 17      | 2.x                   | `yarn add ngx-translate-version`   |
+| 16      | 1.x                   | `yarn add ngx-translate-version@1` |
 | 15      | 0.x                   | `yarn add ngx-translate-version@0` |
 
 ## Peer Dependencies
 
 ```
-  "@angular/common": ">=16",
-  "@angular/core": ">=16",
+  "@angular/common": ">=17",
+  "@angular/core": ">=17",
   "@gilsdav/ngx-translate-router-http-loader": ">=2",
-  "@gilsdav/ngx-translate-router": ">=6",
+  "@gilsdav/ngx-translate-router": ">=7",
   "@ngx-translate/core": ">=15",
   "@ngx-translate/http-loader": ">=8"
 ```

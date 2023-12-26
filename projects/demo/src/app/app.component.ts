@@ -4,7 +4,7 @@ import { VERSION } from '../environments/version';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrl: './app.component.scss'
 })
 export class AppComponent {
   public title = 'ngx-translate-version';
