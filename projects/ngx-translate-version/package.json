@@ -10,10 +10,10 @@
   "license": "MIT",
   "description": "Angular module that provides version to your language files",
   "peerDependencies": {
-    "@angular/common": ">=16",
-    "@angular/core": ">=16",
+    "@angular/common": ">=17",
+    "@angular/core": ">=17",
     "@gilsdav/ngx-translate-router-http-loader": ">=2",
-    "@gilsdav/ngx-translate-router": ">=6",
+    "@gilsdav/ngx-translate-router": ">=7",
     "@ngx-translate/core": ">=15",
     "@ngx-translate/http-loader": ">=8"
   },
@@ -36,6 +36,6 @@
     "version"
   ],
   "engines": {
-    "node": ">=14"
+    "node": ">=18"
   }
 }

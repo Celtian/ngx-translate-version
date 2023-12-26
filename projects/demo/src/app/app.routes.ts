@@ -1,9 +1,9 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
     path: '',
+    pathMatch: 'full',
     loadChildren: () => import('./homepage/homepage.module').then((m) => m.HomepageModule)
   },
   {
@@ -13,16 +13,9 @@ export const routes: Routes = [
   {
     path: 'page-two',
     loadChildren: () => import('./page-two/page-two.module').then((m) => m.PageTwoModule)
+  },
+  {
+    path: '**',
+    redirectTo: ''
   }
 ];
-
-@NgModule({
-  imports: [
-    RouterModule.forRoot(routes, {
-      scrollOffset: [0, 20],
-      scrollPositionRestoration: 'enabled'
-    })
-  ],
-  exports: [RouterModule]
-})
-export class AppRoutingModule {}
