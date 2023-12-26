@@ -25,18 +25,36 @@ Here's the [demo](http://celtian.github.io/ngx-translate-version/)
 yarn add ngx-translate-version
 ```
 
-2. Add NgxTranslateVersionModule into your module `imports`
+2. Add `provideTranslateVersion` into your config
 
 ```typescript
-  import { NgxTranslateVersionModule } from 'ngx-translate-version';
+import { NgxAppVersionModule } from 'ngx-app-version';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    // ...
+    provideTranslateVersion(routes, {
+      defaultLanguage: 'en',
+      version: '1.0.0',
+      pathLocales: 'assets/locales.json',
+      pathI18n: (lang) => `assets/i18n/${lang}.json`
+    })
+  ]
+};
+```
+
+or module
+
+```typescript
+  import { NgxAppVersionModule } from 'ngx-app-version';
 
   @NgModule({
    // ...
-   imports: [
+   providers: [
      // ...
-     NgxTranslateVersionModule.forRoot(routes, {
+     provideTranslateVersion(routes, {
        defaultLanguage: 'en',
-       version: VERSION.TAG,
+       version: '1.0.0',
        pathLocales: 'assets/locales.json',
        pathI18n: (lang) => `assets/i18n/${lang}.json`
      })
