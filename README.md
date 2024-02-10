@@ -92,7 +92,7 @@ or module
 
 ## License
 
-Copyright &copy; 2023 [Dominik Hladik](https://github.com/Celtian)
+Copyright &copy; 2023 - 2024 [Dominik Hladik](https://github.com/Celtian)
 
 All contents are licensed under the [MIT license].
 
