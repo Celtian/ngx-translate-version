@@ -1,5 +1,5 @@
 import { APP_BASE_HREF, Location, PlatformLocation } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { EnvironmentProviders, importProvidersFrom, makeEnvironmentProviders } from '@angular/core';
 import { Route } from '@angular/router';
 import { LocalizeParser, LocalizeRouterModule, LocalizeRouterSettings } from '@gilsdav/ngx-translate-router';
@@ -18,8 +18,8 @@ export const provideTranslateVersion = (
   config: Partial<NgxTranslateVersionConfig>
 ): EnvironmentProviders => {
   return makeEnvironmentProviders([
+    provideHttpClient(withInterceptorsFromDi()),
     importProvidersFrom(
-      HttpClientModule,
       TranslateModule.forRoot({
         loader: {
           provide: TranslateLoader,
