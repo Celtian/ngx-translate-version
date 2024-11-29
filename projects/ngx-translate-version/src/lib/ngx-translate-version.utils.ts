@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Location } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { InjectionToken } from '@angular/core';
@@ -59,12 +60,14 @@ export class LocalizeCustomLoader extends LocalizeParser {
     super(translate, location, settings);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public load(_: Routes): Promise<any> {
     return new Promise((resolve: any) => {
       this.http
-        .get<{ locales: string[]; prefix: string }>(
-          `${this.baseHref}${this.config.pathLocales}?v=${this.config.version}`
-        )
+        .get<{
+          locales: string[];
+          prefix: string;
+        }>(`${this.baseHref}${this.config.pathLocales}?v=${this.config.version}`)
         .subscribe((data) => {
           this.locales = data.locales;
           this.prefix = data.prefix;
