@@ -4,7 +4,6 @@ import { PageTwoRoutingModule } from './page-two-routing.module';
 import { PageTwoComponent } from './page-two.component';
 
 @NgModule({
-  declarations: [PageTwoComponent],
-  imports: [CommonModule, PageTwoRoutingModule]
+  imports: [CommonModule, PageTwoRoutingModule, PageTwoComponent]
 })
 export class PageTwoModule {}
