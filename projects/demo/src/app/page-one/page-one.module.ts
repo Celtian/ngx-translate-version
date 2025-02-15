@@ -4,7 +4,6 @@ import { PageOneRoutingModule } from './page-one-routing.module';
 import { PageOneComponent } from './page-one.component';
 
 @NgModule({
-  declarations: [PageOneComponent],
-  imports: [CommonModule, PageOneRoutingModule]
+  imports: [CommonModule, PageOneRoutingModule, PageOneComponent]
 })
 export class PageOneModule {}
